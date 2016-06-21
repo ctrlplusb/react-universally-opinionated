@@ -24,21 +24,25 @@ Its not even worth looking at this repo yet, I have yet to push anything of valu
 
 This boilerplate contains an opinionated set of features and dependencies on top of the super minimal [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate.  Use this as a repository to fish out further ideas for your own implementation - I highly recommend you use the [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate as your project starting point rather than this version.
 
+## Features
+
+  - Node V6
+  - `express` web server.
+  - Server side rendering.
+  - Full ES2015 support via babel where needed.
+  - Bundling of both client and server using `webpack`.
+  - Client bundle is split into "main" and "vendor" chunks.
+  - Tree-shaking. 
+  - Live development - i.e. hot reloading of both client and server source.
+  - `react` as the view.
+  - `react-router` as the router.
+  - A full development and optimised production configuration.
+  - Application configuration via environment file.
+  - `redux` and `react-redux` for uni-directional application state management.
+  - Unit testing via `mocha`.
+  - Data persistence and streaming via `horizon`.
+
 ## Overview
-
-The core tech stack includes the following:
-
-  - __node v6__ - mmmmm es2015 support.
-  - __express__ - web server.
-  - __react__ - yep.
-  - __react-router__ - routing for both server and client.
-  - __dotenv__ - environment configuration.
-  - __babel__ - transpilation for browsers.
-  - __webpack 2__ - bundling (with tree shaking) for the server and client.
-
-That's about it really.  Redux/MobX, data persistence, test frameworks, CSS/CSSInJS loaders, Image loaders, and all the other bells and whistles have been explicitly excluded from this boilerplate.  Its up to you to decide what technologies you would like to add to your own implementation based upon your own needs, this boilerplate simply serves as a clean base upon which to do so.
-
-If you would like to reference a more opinionated boilerplate, then have a look at [React, Univerally (Opinionated)](https://github.com/ctrlplusb/react-universally-opinionated). However, I must warn you that implementation is highly structured to meet my own development requirements.  I would recommend that you simply fish ideas from it and implement them in your own codebase.
 
 This boilerplate uses Webpack 2 to produce bundles for both the client and the
 server code.  You will notice two Webpack configuration files that allow you to target the respective environments:

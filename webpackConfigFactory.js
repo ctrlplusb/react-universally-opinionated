@@ -172,9 +172,9 @@ function webpackConfigFactory ({ target, mode }) {
           HZ_TOKEN_SECRET: JSON.stringify(process.env.HZ_TOKEN_SECRET)
         },
         // Indicates that the bundle is a server bundle.
-        '__SERVER__': ifServer('true', 'false'),
+        'global.IS_SERVER': JSON.stringify(isServer),
         // Indicates that the bundle is a client bundle.
-        '__CLIENT__': ifClient('true', 'false')
+        'global.IS_CLIENT': JSON.stringify(isClient)
       }),
 
       // Generates a JSON file containing a map of all the output files for

@@ -1,7 +1,9 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { RouterContext, match, createMemoryHistory } from 'react-router'
-import render from '../htmlPage/render'
+import createStore from '../../shared/redux/createStore'
 import routes from '../../shared/routes'
+import render from '../htmlPage/render'
 
 /**
  * An express middleware that is capabable of doing React server side rendering.
@@ -18,6 +20,10 @@ function universalReactAppMiddleware (request, response) {
     return
   }
 
+  // Create the redux store.
+  const store = createStore()
+
+  // This in-memory version of history will play nicely with our SSR.
   const history = createMemoryHistory(request.originalUrl)
 
   // Server side handling of react-router.
@@ -33,7 +39,13 @@ function universalReactAppMiddleware (request, response) {
       // your "not found" component or route respectively, and send a 404 as
       // below, if you're using a catch-all route.
 
-      const html = render({ rootElement: <RouterContext {...renderProps} /> })
+      const reactApp = (
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      )
+
+      const html = render({ rootElement: reactApp })
       response.status(200).send(html)
     } else {
       response.status(404).send('Not found')
