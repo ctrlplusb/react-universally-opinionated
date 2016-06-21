@@ -1,7 +1,13 @@
+# WIP WIP WIP
+
+Its not even worth looking at this repo yet, I have yet to push anything of value.  This message will disappear once I have done so.
+
+---
+
 <p align='center'>
-  <h1 align='center'>React, Universally</h1>
+  <h1 align='center'>React, Universally (Opinionated)</h1>
   <p align='center'><img width='150' src='https://raw.githubusercontent.com/ctrlplusb/assets/master/logos/react-universally.png' /></p>
-  <p align='center'>An ultra low dependency node v6 universal react boilerplate.</p>
+  <p align='center'>A highly opinionated expansion of the [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate.</p>
 </p>
 
 ## TOC
@@ -16,8 +22,7 @@
 
 ## About
 
-This boilerplate contains a super minimal set of dependencies in order to get
-you up and running with a universal react project, whilst also providing you with a great development experience that includes hot reloading of the client and server code. 
+This boilerplate contains an opinionated set of features and dependencies on top of the super minimal [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate.  Use this as a repository to fish out further ideas for your own implementation - I highly recommend you use the [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate as your project starting point rather than this version.
 
 ## Overview
 
@@ -49,7 +54,7 @@ Given that we are bundling our server code I have included the `source-map-suppo
 
 All the source code is written in ES2015, and I have explicitly kept it to the true specification (bar JSX syntax).  As we are following this approach it is unnecessary for us to transpile our source code for the server into ES5, as `node` v6 has native support for almost all of the ES2015 syntax.  Our client (browser) bundle is however transpiled to ES5 code for maximum browser/device support.
 
-The application configuration is supported by the `dotenv` module and it requires you to create a `.env` file in the project root (you can use the `.env_example` as a base).  The `.env` file has been explicitly ignored from git as it will typically contain environment sensitive/specific information.  In the usual case your continuous deployment tool of choice should configure the specific `.env` file that is needed for a target environment. 
+The application configuration is supported by the `dotenv` module and it requires you to create a `.env` file in the project root (you can use the `.env_example` as a base).  The `.env` file has been explicitly ignored from git as it will typically contain environment sensitive/specific information.  In the usual case your continuous deployment tool of choice should configure the specific `.env` file that is needed for a target environment.
 
 ## Project Structure
 
@@ -58,7 +63,7 @@ The application configuration is supported by the `dotenv` module and it require
 |- build // The target output dir for our build commands.
 |  |- client // The built client module.
 |  |- server // The built server module
-| 
+|
 |- src  // All the source code
 |  |- server // The server specific source
 |  |- client // The client specific source
@@ -68,7 +73,7 @@ The application configuration is supported by the `dotenv` module and it require
 |- devServer.js // Creates a hot reloading development environment
 |- webpack.client.config.js // Client target webpack configuration
 |- webpack.server.config.js // Server target webpack configuration
-|- webpackConfigFactory.js  // Webpack configuration builder 
+|- webpackConfigFactory.js  // Webpack configuration builder
 ```
 
 ## Runtime Dependencies
@@ -101,19 +106,19 @@ __Step 3: Set up your env configuration file__
 The application depends on environment settings which are exposed to the application via a `.env` file.  You will have to create one of these using the example version (`.env_example`).  You could simply copy the example:
 
     cp .env_example .env
-    
+
 I would recommend that you review the options within the `.env` file.
 
 __Step 4: Install the awesome "now" CLI__
 
     npm install -g now
-    
+
 These guys are amazing hosts.  [Check them out.](https://zeit.co/now#)
 
 __Step 5: Deploy to "now"__
 
     cp .env .envnow && now  && rm -r .envnow
-    
+
 The above command will create a temporary file to expose your `.env` file to the `now` host.  It will then deploy to `now` and subsequently delete the temp env file.
 
 That's it.  Your clipboard will contain the address of the deployed app. Open your browser, paste, go.  
