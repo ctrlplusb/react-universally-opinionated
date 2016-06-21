@@ -39,6 +39,7 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - A full development and optimised production configuration.
   - Application configuration via environment file.
   - `redux` and `react-redux` for uni-directional application state management.
+  - Redux Dev Tools Extension auto integration for development.
   - Unit testing via `mocha`.
   - Data persistence and streaming via `horizon`.
 
