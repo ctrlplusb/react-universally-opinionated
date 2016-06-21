@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { reduxObservable } from 'redux-observable'
 import reducers from '../reducers'
 
 const isHotDevelopmentClient = process.env.NODE_ENV === 'development' &&
@@ -9,7 +10,9 @@ function enhancedCreateStore (initialState = {}) {
   const store = createStore(
     combineReducers(reducers),
     initialState,
-    // Redux Dev Tools Enhancer (https://github.com/zalmoxisus/redux-devtools-extension)
+    // Middleware store enhancer,
+    applyMiddleware(reduxObservable()),
+    // Redux Dev Tools store enhancer (https://github.com/zalmoxisus/redux-devtools-extension)
     isHotDevelopmentClient && typeof window.devToolsExtension !== 'undefined'
       // Redux Dev Tools should only be enabled in development mode
       // on the client, and if they are available.

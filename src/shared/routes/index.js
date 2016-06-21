@@ -1,9 +1,8 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from '../components/App'
-import About from '../components/About'
 
-function handleError(err) {
+function handleError (err) {
   console.log('==> Error occurred loading dynamic route')
   console.log(err)
 }
