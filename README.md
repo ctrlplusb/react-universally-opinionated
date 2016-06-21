@@ -7,7 +7,7 @@ Its not even worth looking at this repo yet, I have yet to push anything of valu
 <p align='center'>
   <h1 align='center'>React, Universally (Opinionated)</h1>
   <p align='center'><img width='150' src='https://raw.githubusercontent.com/ctrlplusb/assets/master/logos/react-universally.png' /></p>
-  <p align='center'>A highly opinionated expansion of the [React, Universally](https://github.com/ctrlplusb/react-universally) boilerplate.</p>
+  <p align='center'>A highly opinionated expansion of the <a href="https://github.com/ctrlplusb/react-universally">React, Universally</a> boilerplate.</p>
 </p>
 
 ## TOC
