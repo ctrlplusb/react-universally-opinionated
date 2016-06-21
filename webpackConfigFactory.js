@@ -165,7 +165,11 @@ function webpackConfigFactory ({ target, mode }) {
           CLIENT_DEVSERVER_PORT: JSON.stringify(process.env.CLIENT_DEVSERVER_PORT),
           DISABLE_SSR: process.env.DISABLE_SSR,
           WEBSITE_TITLE: JSON.stringify(process.env.WEBSITE_TITLE),
-          WEBSITE_DESCRIPTION: JSON.stringify(process.env.WEBSITE_DESCRIPTION)
+          WEBSITE_DESCRIPTION: JSON.stringify(process.env.WEBSITE_DESCRIPTION),
+          HZ_DB_NAME: JSON.stringify(process.env.HZ_DB_NAME),
+          HZ_DB_HOST: JSON.stringify(process.env.HZ_DB_HOST),
+          HZ_DB_PORT: JSON.stringify(process.env.HZ_DB_PORT),
+          HZ_TOKEN_SECRET: JSON.stringify(process.env.HZ_TOKEN_SECRET)
         },
         // Indicates that the bundle is a server bundle.
         '__SERVER__': ifServer('true', 'false'),

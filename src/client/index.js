@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Router, browserHistory } from 'react-router'
 import routes from '../shared/routes'
+import horizon from '../shared/database/connection'
 
 // Get the DOM Element that will host our React application.
 const container = document.getElementById('app')

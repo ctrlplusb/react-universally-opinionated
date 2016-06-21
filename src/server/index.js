@@ -4,6 +4,7 @@
 import 'source-map-support/register'
 
 import express from 'express'
+import horizon from '@horizon/server'
 import compression from 'compression'
 import hpp from 'hpp'
 import helmet from 'helmet'
@@ -54,5 +55,24 @@ server.get('*', universalReactAppMiddleware)
 const serverListener = server.listen(process.env.SERVER_PORT)
 console.log(`==> 💚  Server is running on port ${process.env.SERVER_PORT}`)
 
+// Bind our server to horizon
+// @see http://horizon.io/docs/embed/
+const horizonOptions = {
+  project_name: process.env.HZ_DB_NAME,
+  rdb_host: process.env.HZ_DB_HOST,
+  rdb_port: process.env.HZ_DB_PORT,
+  auto_create_collection: true,
+  auto_create_index: true,
+  auth: {
+    token_secret: process.env.HZ_TOKEN_SECRET,
+    allow_anonymous: true,
+    allow_unauthenticated: true
+  }
+}
+const horizonServer = horizon(serverListener, horizonOptions)
+
 // We export the listener as it will be handy for our development hot reloader.
-export default serverListener
+export {
+  serverListener,
+  horizonServer
+}
