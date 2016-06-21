@@ -16,7 +16,6 @@ Its not even worth looking at this repo yet, I have yet to push anything of valu
  - [Features](https://github.com/ctrlplusb/react-universally#features)
  - [Overview](https://github.com/ctrlplusb/react-universally#overview)
  - [Project Structure](https://github.com/ctrlplusb/react-universally#project-structure)
- - [Deploy your very own Server Side Rendering React App in 5 easy steps](https://github.com/ctrlplusb/react-universally#deploy-your-very-own-server-side-rendering-react-app-in-5-easy-steps)
  - [npm script commands](https://github.com/ctrlplusb/react-universally#npm-script-commands)
  - [References](https://github.com/ctrlplusb/react-universally#references)
 
