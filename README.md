@@ -1,6 +1,6 @@
 # WIP WIP WIP
 
-Its not even worth looking at this repo yet, I have yet to push anything of value.  This message will disappear once I have done so.
+This is very much work in progress.  You can have a look if you like, I am trying to list the features in the README as I add them (see below).  I wouldn't try and use this as a base project though, its still far from where it needs to be.  Once its ready this message will disappear.
 
 ---
 
@@ -34,15 +34,15 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - Seperate "vendor" chunk for client.
   - Tree-shaking for smaller build output. 
   - Live development - i.e. hot reloading of both client and server source.
-  - Data persistence and streaming via `horizon`.
+  - Data persistence and streaming via `horizon`. _WIP, config only._
   - `react` as the view.
-  - `react-router` as the router.
-  - `redial` to manage data fetching pre-render for the server.
+  - `react-router` as the router, with an asynchronous routing configuration.
+  - `redial` to manage data fetching pre-render for the server. _Dependency installed only, not yet working_
   - A full development and optimised production configuration.
   - Application configuration via environment file.
   - `redux` and `react-redux` for uni-directional application state management.
   - Redux Dev Tools Extension auto integration for development.
-  - Unit testing via `mocha`.
+  - Unit testing support via `mocha`, `enzyme`, `chai` and `sinon`.
 
 ## Overview
 
@@ -61,6 +61,10 @@ Given that we are bundling our server code I have included the `source-map-suppo
 All the source code is written in ES2015, and I have explicitly kept it to the true specification (bar JSX syntax).  As we are following this approach it is unnecessary for us to transpile our source code for the server into ES5, as `node` v6 has native support for almost all of the ES2015 syntax.  Our client (browser) bundle is however transpiled to ES5 code for maximum browser/device support.
 
 The application configuration is supported by the `dotenv` module and it requires you to create a `.env` file in the project root (you can use the `.env_example` as a base).  The `.env` file has been explicitly ignored from git as it will typically contain environment sensitive/specific information.  In the usual case your continuous deployment tool of choice should configure the specific `.env` file that is needed for a target environment.
+
+## Configuring your System
+
+__TODO:__ Details on horizon/rethinkdb install and configuration.
 
 ## Project Structure
 
