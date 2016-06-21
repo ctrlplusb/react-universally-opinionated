@@ -13,9 +13,9 @@ Its not even worth looking at this repo yet, I have yet to push anything of valu
 ## TOC
 
  - [About](https://github.com/ctrlplusb/react-universally#about)
+ - [Features](https://github.com/ctrlplusb/react-universally#features)
  - [Overview](https://github.com/ctrlplusb/react-universally#overview)
  - [Project Structure](https://github.com/ctrlplusb/react-universally#project-structure)
- - [Runtime Dependencies](https://github.com/ctrlplusb/react-universally#runtime-dependencies)
  - [Deploy your very own Server Side Rendering React App in 5 easy steps](https://github.com/ctrlplusb/react-universally#deploy-your-very-own-server-side-rendering-react-app-in-5-easy-steps)
  - [npm script commands](https://github.com/ctrlplusb/react-universally#npm-script-commands)
  - [References](https://github.com/ctrlplusb/react-universally#references)
@@ -79,54 +79,7 @@ The application configuration is supported by the `dotenv` module and it require
 |- webpack.client.config.js // Client target webpack configuration
 |- webpack.server.config.js // Server target webpack configuration
 |- webpackConfigFactory.js  // Webpack configuration builder
-```
-
-## Runtime Dependencies
-
-Even though we are using webpack to support our universal application we keep the webpack runtime out of our production runtime environment.  Everything is prebundled in prep for production exection.  Therefore we only have the following runtime dependencies:
-
-  - `node` v6
-  - `compression` - Gzip compression support for express server responses.
-  - `express` - Web server.
-  - `helmet` - Provides a content security policy for express.
-  - `hpp` - Express middleware to protect against HTTP Parameter Pollution attacks.
-  - `react` - A declarative, efficient, and flexible JavaScript library for building user interfaces.
-  - `react-dom` - React support for the DOM.
-  - `react-router` - A complete routing library for React.
-  - `serialize-javascript` - A superset of JSON that includes regular expressions and functions.
-  - `source-map-support` - Adds source map support to node.js (for stack traces).
-
-## Deploy your very own Server Side Rendering React App in 5 easy steps ##
-
-__Step 1: Clone the repository.__
-
-    git clone https://github.com/ctrlplusb/react-universally
-
-__Step 2: `cd` into the cloned directory__
-
-    cd react-universally
-
-__Step 3: Set up your env configuration file__
-
-The application depends on environment settings which are exposed to the application via a `.env` file.  You will have to create one of these using the example version (`.env_example`).  You could simply copy the example:
-
-    cp .env_example .env
-
-I would recommend that you review the options within the `.env` file.
-
-__Step 4: Install the awesome "now" CLI__
-
-    npm install -g now
-
-These guys are amazing hosts.  [Check them out.](https://zeit.co/now#)
-
-__Step 5: Deploy to "now"__
-
-    cp .env .envnow && now  && rm -r .envnow
-
-The above command will create a temporary file to expose your `.env` file to the `now` host.  It will then deploy to `now` and subsequently delete the temp env file.
-
-That's it.  Your clipboard will contain the address of the deployed app. Open your browser, paste, go.  
+```  
 
 ## npm script commands##
 
@@ -148,6 +101,7 @@ Deletes any build output that would have originated from the other commands.
 
 ## References ##
 
+  - __Horizon__ - http://horizon.io/
   - __Webpack 2__ - https://gist.github.com/sokra/27b24881210b56bbaff7
   - __React Hot Loader v3__ - https://github.com/gaearon/react-hot-boilerplate/pull/61
   - __dotenv__ - https://github.com/bkeepers/dotenv
