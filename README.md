@@ -30,17 +30,19 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - Server side rendering.
   - Full ES2015 support via babel where needed.
   - Bundling of both client and server using `webpack`.
-  - Client bundle is split into "main" and "vendor" chunks.
-  - Tree-shaking. 
+  - Client bundle is split into multiple chunks based on routes.
+  - Seperate "vendor" chunk for client.
+  - Tree-shaking for smaller build output. 
   - Live development - i.e. hot reloading of both client and server source.
+  - Data persistence and streaming via `horizon`.
   - `react` as the view.
   - `react-router` as the router.
+  - `redial` to manage data fetching pre-render for the server.
   - A full development and optimised production configuration.
   - Application configuration via environment file.
   - `redux` and `react-redux` for uni-directional application state management.
   - Redux Dev Tools Extension auto integration for development.
   - Unit testing via `mocha`.
-  - Data persistence and streaming via `horizon`.
 
 ## Overview
 
