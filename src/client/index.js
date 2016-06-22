@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory, match } from 'react-router'
 import createStore from '../shared/redux/createStore'
 import routes from '../shared/routes'
-import horizonClient from '../shared/horizon/client'
+import initSocket from './socket/init'
 
 // Get the DOM Element that will host our React application.
 const container = document.getElementById('app')
@@ -15,6 +15,9 @@ const store = createStore(
   // Server side rendering would have mounted our state on this global.
   window.APP_STATE
 )
+
+// Init our web socket.
+initSocket()
 
 function renderApp () {
   // As we are using asynchronous react-router routes we have to use the following

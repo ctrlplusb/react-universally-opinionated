@@ -21,7 +21,7 @@ function createNotification (subject, msg) {
  * Server bundle dev server starter.
  */
 function startServerBundle () {
-  let serverBundle = null
+  let serverBundleListener = null
   let lastConnectionKey = 0
   const connectionMap = {}
 
@@ -48,10 +48,10 @@ function startServerBundle () {
 
     // The server bundle  will automatically start the web server just by
     // requiring it.
-    serverBundle = require(serverBundlePath)
+    serverBundleListener = require(serverBundlePath).default
 
     // Track all connections to our server so that we can close them when needed.
-    serverBundle.serverListener.on('connection', connection => {
+    serverBundleListener.on('connection', connection => {
       // Generate a new key to represent the connection
       const connectionKey = ++lastConnectionKey
       // Add the connection to our map.
@@ -68,17 +68,14 @@ function startServerBundle () {
   function compileServerBundle () {
     // Shut down any existing running server if necessary before starting the
     // compile, else just compile.
-    if (serverBundle) {
-      // Shut down the horizon server.
-      serverBundle.horizonServer.close()
-
+    if (serverBundleListener) {
       // Destroy any http connections.
       Object.keys(connectionMap).forEach((connectionKey) => {
         connectionMap[connectionKey].destroy()
       })
 
       // Then we close the server listener.
-      serverBundle.serverListener.close((err) => {
+      serverBundleListener.close((err) => {
         if (err) {
           throw err
         }

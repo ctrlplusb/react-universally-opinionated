@@ -27,6 +27,13 @@ This boilerplate contains an opinionated set of features and dependencies on top
 
   - Node V6
   - `express` web server.
+  - `react` as the view.
+  - `react-router` as the router, with an asynchronous routing configuration.
+  - `redux`, `react-redux` and `redux-observable` for uni-directional application state management.
+  - `redial` to manage data fetching pre-render for the server. ___WIP___
+  - `rethinkdb` as the database. ___WIP___
+  - `rethinkdbdash` as our `rethinkdb` client. ___WIP___
+  - `socket.io` for our websocket layer. ___WIP___
   - Server side rendering.
   - Full ES2015 support via babel where needed.
   - Bundling of both client and server using `webpack`.
@@ -35,14 +42,9 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - Seperate "vendor" chunk for client.
   - Tree-shaking for smaller build output. 
   - Live development - i.e. hot reloading of both client and server source.
-  - Data persistence and streaming via `horizon`. _WIP, config only._
-  - `react` as the view.
-  - `react-router` as the router, with an asynchronous routing configuration.
-  - `redux`, `react-redux` and `redux-observable` for uni-directional application state management.
-  - `redial` to manage data fetching pre-render for the server. _Dependency installed only, not yet working_
   - Application configuration via environment file.
   - Redux Dev Tools Extension auto integration for development.
-  - Unit testing support via `mocha`, `enzyme`, `chai` and `sinon`.
+  - Unit testing support via `mocha`, `enzyme`, `chai` and `sinon`. ___WIP___
 
 ## Overview
 
