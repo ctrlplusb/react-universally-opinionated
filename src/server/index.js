@@ -58,5 +58,4 @@ console.log(`==> 💚  HTTP Listener is running on port ${process.env.SERVER_POR
 // Initialise our sockets.
 initSockets(server)
 
-// We export the http listener as it will be handy for our development hot reloader.
 export default listener
