@@ -29,13 +29,13 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - `express` web server.
   - `react` as the view.
   - `react-router` as the router, with an asynchronous routing configuration.
-  - `redux`, `react-redux` and `redux-observable` for uni-directional application state management.
+  - `redux`, `react-redux` and `redux-observable` for uni-directional application state management. ___WIP___
   - `redial` to manage data fetching pre-render for the server. ___WIP___
   - `rethinkdb` as the database. ___WIP___
   - `rethinkdbdash` as our `rethinkdb` client. ___WIP___
   - `socket.io` for our websocket layer. ___WIP___
   - `lodash` as our utility library.
-  - Facebook's flow for static type checking.
+  - Facebook's flow for static type checking. ___WIP___
   - Server side rendering.
   - Full ES2015 support via babel where needed.
   - Bundling of both client and server using `webpack`.
