@@ -1,5 +1,7 @@
-import todos from './todos'
+/* @flow */
+
+import todos from './todos';
 
 export default {
-  todos
-}
+  todos,
+};

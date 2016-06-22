@@ -1,5 +1,7 @@
-function todos (state = {}, action) {
-  return state
+/* @flow */
+
+function todos(state = {}, action) {
+  return state;
 }
 
-export default todos
+export default todos;

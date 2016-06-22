@@ -1,0 +1,10 @@
+[ignore]
+.*tmp/.*
+
+[libs]
+./node_modules/fbjs/node_modules/promise
+./node_modules/fbjs/flow/lib
+
+[options]
+#module.system=haste
+suppress_type=$FlowIssue

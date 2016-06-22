@@ -1,7 +1,9 @@
-import rethinkdbdash from 'rethinkdbdash'
+/* @flow */
+
+import rethinkdbdash from 'rethinkdbdash';
 
 const r = rethinkdbdash({
 
-})
+});
 
-export default r
+export default r;

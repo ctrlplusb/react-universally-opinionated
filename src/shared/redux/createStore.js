@@ -1,12 +1,14 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { reduxObservable } from 'redux-observable'
-import reducers from '../reducers'
+/* @flow */
+
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { reduxObservable } from 'redux-observable';
+import reducers from '../reducers';
 
 const isHotDevelopmentClient = process.env.NODE_ENV === 'development' &&
   global.IS_CLIENT === true &&
-  module.hot
+  module.hot;
 
-function enhancedCreateStore (initialState = {}) {
+function enhancedCreateStore(initialState = {}) {
   const store = createStore(
     combineReducers(reducers),
     initialState,
@@ -19,18 +21,18 @@ function enhancedCreateStore (initialState = {}) {
       ? window.devToolsExtension()
       // Else we return a noop.
       : f => f
-  )
+  );
 
   if (isHotDevelopmentClient) {
     // Enable Webpack hot module replacement for reducers. This is so that we
     // don't lose all of our current application state.
     module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default
-      store.replaceReducer(nextRootReducer)
-    })
+      const nextRootReducer = require('../reducers').default;
+      store.replaceReducer(nextRootReducer);
+    });
   }
 
-  return store
+  return store;
 }
 
-export default enhancedCreateStore
+export default enhancedCreateStore;

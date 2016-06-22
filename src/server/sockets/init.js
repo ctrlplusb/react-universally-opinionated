@@ -1,16 +1,18 @@
-import bindIO from 'socket.io'
+/* @flow */
 
-function initSockets (httpServer) {
-  const io = bindIO(httpServer)
+import bindIO from 'socket.io';
+
+function initSockets(httpServer) {
+  const io = bindIO(httpServer);
 
   // Fire up our socket listeners
   io.of('/todos').on('connection', (socket) => {
-    console.log('==> Socket connected')
-    setInterval(() => socket.emit('data', { hello: 'world' }), 2000)
+    console.log('==> Socket connected'); // eslint-disable-line no-console
+    setInterval(() => socket.emit('data', { hello: 'world' }), 2000);
     // socket.on('todos', data => console.log(data))
-  })
+  });
 
-  return io
+  return io;
 }
 
-export default initSockets
+export default initSockets;
