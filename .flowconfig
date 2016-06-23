@@ -1,10 +1,29 @@
+[include]
+src/
+
 [ignore]
-.*tmp/.*
 
 [libs]
-./node_modules/fbjs/node_modules/promise
-./node_modules/fbjs/flow/lib
+node_modules/fbjs/flow/lib/Promise.js
+flow-typed
+node_modules/iflow-react-redux/index.js.flow
+node_modules/iflow-lodash/index.js.flow
+node_modules/iflow-isomorphic-fetch/index.js.flow
+
+# The following definitions are bundled with flow:
+# React: https://github.com/facebook/flow/blob/master/lib/react.js
+# Javascript: https://github.com/facebook/flow/blob/master/lib/core.js
+# Node: https://github.com/facebook/flow/blob/master/lib/node.js
+# DOM: https://github.com/facebook/flow/blob/master/lib/dom.js
+# BOM: https://github.com/facebook/flow/blob/master/lib/bom.js
+# CSSOM: https://github.com/facebook/flow/blob/master/lib/cssom.js
+# IndexDB: https://github.com/facebook/flow/blob/master/lib/indexeddb.js
 
 [options]
-#module.system=haste
+strip_root=true
+module.system=node
+module.use_strict=true
+
 suppress_type=$FlowIssue
+suppress_type=$FlowFixMe
+suppress_type=$FixMe

@@ -1,9 +1,9 @@
 /* @flow */
 
-import { renderToString } from 'react-dom/server';
 import createTemplate from './createTemplate';
 // TODO: Import the webpack config and resolve the bundle assets location from it.
 import ClientBundleAssets from '../../../build/client/assets.json';
+import type { Assets, PageData } from './types';
 
 // This takes the assets.json file that was output by webpack for our client
 // bundle and converts it into an object that contains all the paths to our
@@ -40,7 +40,9 @@ const template = createTemplate(assets);
  *
  * @return The full HTML page in the form of a React element.
  */
-function render({ rootElement, initialState, title, meta = {} } = {}) {
+function render(pageData : ?PageData) {
+  const { rootElement, initialState, title, meta = {} } = (pageData || {});
+
   return template({
     title: title || process.env.WEBSITE_TITLE,
     meta: Object.assign(
@@ -48,7 +50,7 @@ function render({ rootElement, initialState, title, meta = {} } = {}) {
       { description: process.env.WEBSITE_DESCRIPTION },
       meta
     ),
-    reactRootElement: rootElement ? renderToString(rootElement) : '',
+    reactElement: rootElement,
     initialState,
   });
 }

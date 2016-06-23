@@ -2,8 +2,11 @@
 
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import type { ReactNode } from '../../types/react';
 
-function App({ children }) {
+function App(props: { children: ReactNode }) {
+  const { children } = props;
+
   return (
     <div>
       <div style={{ textAlign: 'center' }}>

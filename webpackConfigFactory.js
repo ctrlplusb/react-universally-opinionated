@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 // @see https://github.com/motdotla/dotenv
 const dotenv = require('dotenv');
@@ -108,10 +109,19 @@ function webpackConfigFactory({ target, mode }) {
         // We create a seperate chunk containing our vendor modules. This can
         // avoid unnecessary downloads by users as well as speed up development
         // rebuild times by not having to rebundle everything with every change.
-        vendor: removeEmpty([
+        vendor: [
+          'isomorphic-fetch',
+          'lodash',
           'react',
           'react-dom',
-        ]),
+          'react-redux',
+          'react-router',
+          'redial',
+          'redux',
+          'redux-observable',
+          'rxjs',
+          'socket.io-client',
+        ],
       })
     ),
     output: {
@@ -163,6 +173,7 @@ function webpackConfigFactory({ target, mode }) {
           NODE_ENV: JSON.stringify(mode),
           // All the below items match the config items in our .env file. Go
           // to the .env_example for a description of each key.
+          SERVER_HOST: JSON.stringify(process.env.SERVER_HOST),
           SERVER_PORT: JSON.stringify(process.env.SERVER_PORT),
           CLIENT_DEVSERVER_PORT: JSON.stringify(process.env.CLIENT_DEVSERVER_PORT),
           DISABLE_SSR: process.env.DISABLE_SSR,
@@ -213,8 +224,8 @@ function webpackConfigFactory({ target, mode }) {
         })
       ),
 
+      // JS Minification.
       ifProdClient(
-        // JS Minification.
         new webpack.optimize.UglifyJsPlugin({
           compress: {
             screw_ie8: true,
@@ -222,6 +233,11 @@ function webpackConfigFactory({ target, mode }) {
           },
         })
       ),
+
+      // Create smaller Lodash builds by replacing feature sets of modules with
+      // noop, identity, or simpler alternatives.
+      // @see https://github.com/lodash/lodash-webpack-plugin
+      // ifProdClient(new LodashModuleReplacementPlugin()),
 
       ifProd(
         // This is actually only useful when our deps are installed via npm2.
@@ -239,13 +255,6 @@ function webpackConfigFactory({ target, mode }) {
           loader: 'babel-loader',
           exclude: [/node_modules/, path.resolve(__dirname, './build')],
           query: merge(
-            {
-              env: {
-                development: {
-                  plugins: ['react-hot-loader/babel'],
-                },
-              },
-            },
             ifServer({
               // We are running a node 6 server which has support for almost
               // all of the ES2015 syntax, therefore we only transpile JSX.
@@ -254,13 +263,21 @@ function webpackConfigFactory({ target, mode }) {
             ifClient({
               // For our clients code we will need to transpile our JS into
               // ES5 code for wider browser/device compatability.
-              presets: [
+              presets: removeEmpty([
                 // JSX
                 'react',
-                // Webpack 2 includes support for es2015 imports, therefore we used this
-                // modified preset.
+                // Webpack 2 includes support for es2015 imports, therefore we
+                // use this modified preset.
                 'es2015-webpack',
-              ],
+                // Provides awesome react optimisations.
+                // @see https://github.com/thejameskyle/babel-react-optimize
+                ifProd('react-optimize'),
+                // Optimises our lodash bundle size.
+                // @see https://github.com/lodash/babel-plugin-lodash
+                // ifProd('lodash'),
+                // Needed for react hot loader v3
+                ifDev('react-hot-loader/babel'),
+              ]),
             })
           ),
         },

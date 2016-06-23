@@ -8,7 +8,7 @@ const isHotDevelopmentClient = process.env.NODE_ENV === 'development' &&
   global.IS_CLIENT === true &&
   module.hot;
 
-function enhancedCreateStore(initialState = {}) {
+function enhancedCreateStore(initialState: ?Object = {}) {
   const store = createStore(
     combineReducers(reducers),
     initialState,
@@ -27,8 +27,8 @@ function enhancedCreateStore(initialState = {}) {
     // Enable Webpack hot module replacement for reducers. This is so that we
     // don't lose all of our current application state.
     module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default;
-      store.replaceReducer(nextRootReducer);
+      const nextRootReducer = require('../reducers').default; // eslint-disable-line global-require
+      store.replaceReducer(combineReducers(nextRootReducer));
     });
   }
 

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory, match } from 'react-router';
 import createStore from '../shared/redux/createStore';
 import routes from '../shared/routes';
-import initSocket from './socket/init';
+import dataStreams from './server/dataStreams';
 
 // Get the DOM Element that will host our React application.
 const container = document.getElementById('app');
@@ -17,9 +17,6 @@ const store = createStore(
   // Server side rendering would have mounted our state on this global.
   window.APP_STATE
 );
-
-// Init our web socket.
-initSocket();
 
 function renderApp() {
   // As we are using dynamic react-router routes we have to use the following

@@ -6,11 +6,12 @@ import { RouterContext, match, createMemoryHistory } from 'react-router';
 import createStore from '../../shared/redux/createStore';
 import routes from '../../shared/routes';
 import render from '../htmlPage/render';
+import type { $Request, $Response } from 'express';
 
 /**
  * An express middleware that is capabable of doing React server side rendering.
  */
-function universalReactAppMiddleware(request, response) {
+function universalReactAppMiddleware(request: $Request, response: $Response) {
   if (process.env.DISABLE_SSR) {
     if (process.env.NODE_ENV === 'development') {
       console.log('==> 🐌  Handling react route without SSR'); // eslint-disable-line no-console

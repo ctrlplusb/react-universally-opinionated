@@ -1,8 +1,9 @@
 /* @flow */
 
 import bindIO from 'socket.io';
+import type { Server } from 'http';
 
-function initSockets(httpServer) {
+function initSockets(httpServer: Server) {
   const io = bindIO(httpServer);
 
   // Fire up our socket listeners

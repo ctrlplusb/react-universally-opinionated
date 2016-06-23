@@ -1,6 +1,8 @@
 /* @flow */
 
 import serialize from 'serialize-javascript';
+import { renderToString } from 'react-dom/server';
+import type { Assets, PageData } from './types';
 
 // :: [String] -> [String]
 function cssImports(css) {
@@ -28,14 +30,14 @@ function metaTags(meta) {
 }
 
 // :: Assets -> Content -> String
-function createTemplate(assets = {}) {
-  const { css = [], javascript = [] } = assets;
+function createTemplate(assets : ?Assets) {
+  const { css = [], javascript = [] } = (assets || {});
 
   const cssLinks = cssImports(css);
   const javascriptScripts = javascriptImports(javascript);
 
-  return function pageTemplate(content = {}) {
-    const { title, meta = {}, initialState = {}, reactRootElement } = content;
+  return function pageTemplate(pageData : PageData) {
+    const { title, meta = {}, initialState = {}, reactElement } = pageData;
 
     return `<!DOCTYPE html>
     <html lang='en'>
@@ -51,7 +53,7 @@ function createTemplate(assets = {}) {
         ${cssLinks}
       </head>
       <body>
-        <div id='app'>${reactRootElement}</div>
+        <div id='app'>${reactElement ? renderToString(reactElement) : ''}</div>
 
         <script type='text/javascript'>
           window.APP_STATE=${serialize(initialState)};
