@@ -34,8 +34,9 @@ This boilerplate contains an opinionated set of features and dependencies on top
   - `rethinkdb` as the database. ___WIP___
   - `rethinkdbdash` as our `rethinkdb` client. ___WIP___
   - `socket.io` for our websocket layer. ___WIP___
-  - `lodash` as our utility library.
-  - Facebook's flow for static type checking. ___WIP___
+  - `lodash` as our utility library along with the babel/webpack optimisations. __WIP__
+  - `rxjs` v5 as our streaming library.
+  - Facebook's flow for static type checking.
   - Server side rendering.
   - Full ES2015 support via babel where needed.
   - Bundling of both client and server using `webpack`.
