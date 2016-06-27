@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { RouterContext, match, createMemoryHistory } from 'react-router';
+import { RouterContext, match } from 'react-router';
 import createStore from '../../shared/redux/createStore';
 import routes from '../../shared/routes';
 import render from '../htmlPage/render';
@@ -26,13 +26,10 @@ function universalReactAppMiddleware(request: $Request, response: $Response) {
   // Create the redux store.
   const store = createStore();
 
-  // This in-memory version of history will play nicely with our SSR.
-  const history = createMemoryHistory(request.originalUrl);
-
   // Server side handling of react-router.
   // Read more about this here:
   // https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md
-  match({ routes, history }, (error, redirectLocation, renderProps) => {
+  match({ routes, location: request.originalUrl }, (error, redirectLocation, renderProps) => {
     if (error) {
       response.status(500).send(error.message);
     } else if (redirectLocation) {

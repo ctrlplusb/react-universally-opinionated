@@ -6,7 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { Router, browserHistory, match } from 'react-router';
 import createStore from '../shared/redux/createStore';
-import routes from '../shared/routes';
+import routes from '../shared/routes/index.js';
 import dataStreams from './server/dataStreams';
 
 // Get the DOM Element that will host our React application.
